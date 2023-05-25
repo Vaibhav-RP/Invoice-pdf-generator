@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Invoice</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: lightgray;
+        }
+    </style>
+</head>
+<body>
+    <h1>Invoice</h1>
+    <table>
+        <tr>
+            <th colspan="6">Seller Data</th>
+            <th colspan="6">Buyer Data</th>
+        </tr>
+        <tr>
+            <td colspan="2"><b>Seller:</b></td>
+            <td colspan="4" th:text="${invoiceData.seller}"></td>
+            <td colspan="2"><b>Buyer:</b></td>
+            <td colspan="4" th:text="${invoiceData.buyer}"></td>
+        </tr>
+        <tr>
+            <td colspan="2"><b>GSTIN:</b></td>
+            <td colspan="4" th:text="${invoiceData.sellerGstin}"></td>
+            <td colspan="2"><b>GSTIN:</b></td>
+            <td colspan="4" th:text="${invoiceData.buyerGstin}"></td>
+        </tr>
+        <tr>
+            <td colspan="2"><b>Address:</b></td>
+            <td colspan="4" th:text="${invoiceData.sellerAddress}"></td>
+            <td colspan="2"><b>Address:</b></td>
+            <td colspan="4" th:text="${invoiceData.buyerAddress}"></td>
+        </tr>
+    </table>
+    <br/>
+    <table>
+        <tr>
+            <th>OrderId</th>
+            <th>Item</th>
+            <th>Quantity</th>
+            <th>Rate</th>
+            <th>Amount</th>
+        </tr>
+        <tr th:each="item : ${invoiceData.items}">
+            <td th:text="${item.orderId}"></td>
+            <td th:text="${item.name}"></td>
+            <td th:text="${item.quantity}"></td>
+            <td th:text="${item.rate}"></td>
+            <td th:text="${item.amount}"></td>
+        </tr>
+    </table>
+</body>
+</html>
